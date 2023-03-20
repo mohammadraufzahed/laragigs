@@ -1,13 +1,16 @@
-<h1> {{ $heading }}</h1>
+@extends('layouts/main')
 
-@php
-@endphp
-
-@if (count($listings) == 0)
-    <h1>No Listings</h1>
-@else
-    @foreach ($listings as $listing)
-        <h2><a href="/{{ $listing['id'] }}">{{ $listing['title'] }}</a></h2>
-        <p>{{ $listing['description'] }}</p>
-    @endforeach
-@endif
+@section('content')
+    @include('partials._hero')
+    @include('partials._search')
+    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+        <!-- Item 1 -->
+        @if (count($listings) == 0)
+            <h1>No Listings</h1>
+        @else
+            @foreach ($listings as $listing)
+                <x-listing-card :listing="$listing" />
+            @endforeach
+        @endif
+    </div>
+@endsection

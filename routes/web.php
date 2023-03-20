@@ -22,9 +22,10 @@ Route::get("/", function () {
     ]);
 });
 
-ROute::get("/{id}", function (int $id) {
-    return view('listing', [
-        'heading' => 'Listing number ' . $id,
-        'listing' => Listing::find($id),
-    ]);
+ROute::get("/{listing}", function (Listing $listing) {
+    if ($listing)
+        return view('listing', [
+            'listing' => $listing,
+        ]);
+    else abort(404);
 });
