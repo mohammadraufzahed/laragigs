@@ -1,6 +1,4 @@
-@extends('layouts/main')
-
-@section('content')
+<x-layouts.main>
     @include('partials._search')
     @if (!$listing)
         <h1>Listing Not found</h1>
@@ -41,4 +39,4 @@
             </x-card>
         </div>
     @endif
-@endsection
+</x-layouts.main>
